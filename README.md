@@ -1,9 +1,9 @@
 # vim_config
 
-### 安装步骤
+### 安装
 + mkdir ~/vim_config
 + cd ~/vim_config
-+ 将以下文件拷贝到该文件夹
++ copy following files to this folder.
 
 ### 说明
 ##### vimrc
