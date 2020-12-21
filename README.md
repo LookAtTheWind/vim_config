@@ -4,7 +4,7 @@
 + mkdir ~/vim_config
 + cd ~/vim_config
 + copy the vimrc, basic.vim, maps.vim, plugs.vim, plugs_config.vim, markdown.vim to this folder
-+ create ~/vim/syntax folder, then copy the c.vim to this folder
++ create ~/vim/syntax, then copy the c.vim to this folder
 
 ### 说明
 ##### vimrc
