@@ -3,11 +3,11 @@
 ### 安装
 + mkdir ~/vim_config
 + cd ~/vim_config
-+ copy following files to this folder.
++ copy following files to this folder
 
 ### 说明
 ##### vimrc
-+ 	将~/.vimrc备份，替换成vimrc
++ 	将你的~/.vimrc备份，替换
 
 ##### basic.vim
 +	基本配置
