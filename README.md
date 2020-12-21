@@ -5,7 +5,6 @@
 + cd ~/vim_config
 + copy the vimrc, basic.vim, maps.vim, plugs.vim, plugs_config.vim, markdown.vim to this folder
 + create ~/vim/syntax, then copy the c.vim to this folder
-
 ### 说明
 ##### vimrc
 + 将你的~/.vimrc备份，替换
