@@ -4,6 +4,10 @@
 ##### vimrc
 + 	将~/.vimrc备份，替换成vimrc
 
+> mkdir ~/vim_config
+> cd vim_config/
+> 将以下文件拷贝到该文件夹
+
 ##### basic.vim
 +	基本配置
 
