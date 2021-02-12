@@ -12,3 +12,4 @@ set autochdir		" 编辑文件，自动切换目录
 set colorcolumn=85	" 中间增加分割线，表示要换行了
 set magic			" 解决部分插件可能失效的情况
 set cinoptions+=g0	" 缩进风格保持和其它IDE一样
+colorschem koehler	" 设置vim主题
