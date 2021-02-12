@@ -1,7 +1,3 @@
-" Description:
-"	vim插件自定义配置	
-
-" ****************************************************************
 " YoucompleteMe
 let g:syntastic_ignore_files=[".*\.py$"] 
 let g:ycm_collect_identifiers_from_tag_files = 1
@@ -20,9 +16,7 @@ let g:ycm_warning_symbol='>*'
 set completeopt=longest,menu
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif	"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"	
-" ****************************************************************
 
-" ****************************************************************
 " Nerdtree 
 let NERDTreeHijackNetrw = 1
 let g:NERDTreeWinPos = "left"
@@ -30,65 +24,44 @@ let NERDTreeShowHidden=0
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.vscode$', 'tags',
-                     \'\.exe$', '\.EXE$', '\.obj$', '\.OBJ$', '\.jpg$',
-                     \'\.JPG', '\.png$', '\.PNG$', 'desktop.ini']
-let g:NERDTreeWinSize=30
+			\'\.exe$', '\.EXE$', '\.obj$', '\.OBJ$', '\.jpg$',
+			\'\.JPG', '\.png$', '\.PNG$', 'desktop.ini']
+let g:NERDTreeWinSize=25
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 nnoremap tt :NERDTreeToggle<cr>
-" nnoremap <leader>nb :NERDTreeFromBookmark<Space>
 nnoremap tf :NERDTreeFind<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") &&
-    \b:NERDTree.isTabTree()) | q | endif
-" ****************************************************************
+			\b:NERDTree.isTabTree()) | q | endif
 
-" ****************************************************************
-" octol/vim-cpp-enhanced-highlight
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
-" ****************************************************************
-
-" ****************************************************************
-" hybrid
-set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-colorscheme hybrid 
-" ****************************************************************
-
-" ****************************************************************
 " Tagbar
 nnoremap rr :TagbarToggle<CR>
-" ****************************************************************
 
-" ****************************************************************
-" easymotion
-nmap ss <Plug>(easymotion-s2)
-" ****************************************************************
+" 快速注释风格 tpope/vim-commentary
+autocmd FileType java,c,cpp set commentstring=//\ %s
 
-" ****************************************************************
-" table_mode
-let g:table_mode_corner = '|'
-let g:table_mode_border=0
-let g:table_mode_fillchar=' '
+" cscope
+if has("cscope")  
+	set csprg=/usr/bin/cscope
+	set csto=0
+	set cst
+	set csverb
+	set cspc=3
+	"add any database in current dir
+	if filereadable("cscope.out")
+		cs add cscope.out
+	"else search cscope.out elsewhere
+	elseif $CSCOPE_DB != ""
+		cs add $CSCOPE_DB
+	endif
+	set csverb
+endif
 
-function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
-
-inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-" ****************************************************************
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>    
+nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>x :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
