@@ -1,6 +1,6 @@
 set nocompatible    " 关闭vi模式
-set number          " 添加行号
 set wildmenu        " 命令行补全
+set number			" 显示行号
 set nofoldenable    " 禁用代码折叠
 set hlsearch        " 匹配高亮
 set tabstop=4	    " tab宽度4
@@ -9,7 +9,7 @@ set backspace=indent,eol,start " 可以删除indent,eol,start，解决和其他�
 set t_Co=256		" 终端显示颜色
 set cursorline		" 添加下划线
 set autochdir		" 编辑文件，自动切换目录
-set colorcolumn=85	" 中间增加分割线，表示要换行了
+set colorcolumn=85	" 中间增加分割线，表示该换行了
 set magic			" 解决部分插件可能失效的情况
 set cinoptions+=g0	" 缩进风格保持和其它IDE一样
 colorschem koehler	" 设置vim主题
